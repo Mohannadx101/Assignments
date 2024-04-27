@@ -1,0 +1,233 @@
+Q – 6
+A: Swap Last and first digit:
+
+#include <iostream>
+using namespace std;
+
+void swap(int arr[], int size) {
+
+	int temp = arr[0];
+	arr[0] = arr[size - 1];
+	arr[size - 1] = temp;
+
+	//print
+	for (int i = 0; i < size; i++) {
+		cout << arr[i];
+	}
+
+}
+
+
+
+int main() {
+
+	int arr[9] = { 1,2,3,4,5,6,7,8,9 };
+	int size = 9;
+
+	swap(arr, size);
+
+	return 0;
+}
+
+B : Replace all even elements with 
+
+#include <iostream>
+using namespace std;
+
+void replace(int arr[], int size) {
+
+	for (int j = 0; j < size; j++) { //check
+		if (arr[j] % 2 == 0) {
+			arr[j] = 0; //replace
+		}
+
+	}
+	//print
+	for (int i = 0; i < size; i++) {
+		cout << arr[i];
+	}
+
+}
+
+
+
+int main() {
+
+	int arr[9] = { 1,2,3,4,5,6,7,8,9 };
+	int size = 9;
+
+	replace(arr, size);
+
+	return 0;
+}
+
+C : Remove the middle element if the array length is odd, or the middle two elements if the length is even
+#include <iostream>
+using namespace std;
+
+void middleindex(int arr[], int size) {
+	int midindex = size / 2;
+
+	if (size % 2 == 0) {
+		for (int i = midindex; i < size - 2; i++) {
+			arr[i] = arr[i + 2];
+		}
+		size -= 2;
+	}
+	else {
+		for (int i = midindex; i < size - 1; i++) {
+			arr[i] = arr[i + 1];
+		}
+		size -= 1;
+	}
+
+
+	//print
+	for (int i = 0; i < size; i++) {
+		cout << arr[i];
+	}
+
+}
+
+
+
+int main() {
+
+	int arr[9] = { 1,2,3,4,5,6,7,8,9 };
+	int size = 9;
+
+	middleindex(arr, size);
+
+	return 0;
+}
+
+D : Return true if the array is currently sorted in increasing order.
+#include <iostream>
+using namespace std;
+
+bool sortincrease(int arr[], int size) {
+
+	for (int i = 0; i < size - 1; i++) {
+
+		if (arr[i] > arr[i + 1]) {
+			return false;
+		}
+		else {
+			return true;
+		}
+
+	}
+	
+
+}
+
+
+
+int main() {
+
+	int arr[9] = { 1,2,3,4,5,6,7,8,9 };
+	int size = 9;
+
+	
+	if (sortincrease(arr, size)) {
+		cout << "Array sorted and increasing" << endl;
+	}
+	else {
+		cout << "Array is not sorted" << endl;
+	}
+
+	return 0;
+}
+
+
+E : Return true if the array contains two adjacent duplicate values. For each function, provide a test program.
+#include <iostream>
+using namespace std;
+
+bool adjacentduplicates(int arr[], int size) {
+	for (int i = 0; i < size - 1; i++) {
+		if (arr[i] == arr[i + 1]) {
+			return true;
+		}
+	}
+	return false;
+	
+
+}
+
+
+
+int main() {
+	int array1[9] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }; // No adjacent duplicates
+	int array2[9] = { 1, 2, 3, 3, 5, 6, 7, 8, 9 }; // duplicates (3, 3)
+	int array3[9] = { 1, 2, 3, 4, 4, 6, 7, 8, 9 }; // duplicates (4, 4)
+	int size = 9;
+
+	if (adjacentduplicates(array1, size)) {
+		cout << "adjacents found in Array 1" << endl;
+	}
+	else {
+		cout << "No duplicates in Array 1" << endl;
+	}
+	
+	if (adjacentduplicates(array2, size)) {
+		cout << "adjacents found in Array 2" << endl;
+	}
+	else {
+		cout << "No duplicates in Array 2" << endl;
+	}
+
+	if (adjacentduplicates(array3, size)) {
+		cout << "adjacents found in Array 3" << endl;
+	}
+	else {
+		cout << "No duplicates in Array 3" << endl;
+	}
+
+	return 0;
+}
+
+
+
+Q 7 
+
+#include <iostream>
+using namespace std;
+
+int altsum(int arr[], int size) {
+	int sum = 0;
+	bool substract = false;
+
+	for (int i = 0; i < size; i++) {
+		if (substract) {
+			sum -= arr[i];
+		}
+		else {
+			sum += arr[i];
+		}
+		substract = !substract;
+
+
+	}
+	return sum;
+}
+
+
+
+int main() {
+
+	int arr[9] = { 1,4,9,16,9,7,4,9,11 };
+	int size = 9;
+
+	cout << "Array : ";
+	for (int i = 0; i < size; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+
+
+	int result = altsum(arr, size);
+	cout << " Alternating Sum : " << result << endl;
+
+	return 0;
+}
